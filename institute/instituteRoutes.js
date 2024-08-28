@@ -3,6 +3,7 @@ const router = express.Router();
 const { getInstitutes,addInstitute,getInstituteById,editInstituteById} = require('./controllers/institute.controller');
 const multer = require('multer');
 const path = require('path');
+// const {login} = require('../middleware/login');
 
 // const upload = multer({ dest: 'uploads/' })
 
@@ -23,6 +24,7 @@ router.get('/', getInstitutes);
 router.post('/', upload.single('image'), addInstitute);
 router.get('/:id', getInstituteById);
 router.put('/:id',upload.single('image'), editInstituteById);
+
 
 
 

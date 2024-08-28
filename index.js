@@ -2,9 +2,11 @@ const mongoose = require('mongoose');
 const express = require('express');
 const app = express();
 const usersRouter = require('./users/userRoutes');
-const instituteUserRouter = require('./instituteUsers/instituteUserRoutes');
+const adminUserRouter = require('./adminUsers/adminUserRoutes');
 const instituteRouter = require('./institute/instituteRoutes');
 const departmentRouter = require('./department/departmentRoutes');
+const loginRouter = require('./login/loginRoutes');
+
 
 
 
@@ -39,9 +41,11 @@ mongoose.connect(mongoURI)
 
 app.use(express.json());
 app.use('/users',usersRouter);
-app.use('/instituteUser',instituteUserRouter);
+app.use('/adminUser',adminUserRouter);
 app.use('/institute',instituteRouter);
 app.use('/department',departmentRouter);
+app.use('/login',loginRouter);
+
 
 
 

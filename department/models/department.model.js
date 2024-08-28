@@ -4,7 +4,7 @@ const Joi = require('joi');
 
 const departmentSchema = new mongoose.Schema({
   departmentName: { type: String, required: true }, 
-  instituteName: { type: String, required: true }, 
+  institute: { type: mongoose.Schema.Types.ObjectId, ref: 'Institute', required: true }, 
   departmentHead: { type: String, required: true },
   phoneNumber: { type: String }, 
   emailId: { type: String }, 
@@ -36,7 +36,7 @@ return Department.findByIdAndUpdate(department_id,{ $set: data },{new:true});
 exports.validateDepartment = (department)=> {
     const schema = Joi.object({
         departmentName: Joi.string().required(),
-        instituteName: Joi.string().required(),
+        institute: Joi.string().required(),
         departmentHead: Joi.string().required(),
         phoneNumber: Joi.string(),
         emailId: Joi.string().email(),
@@ -49,7 +49,7 @@ exports.validateDepartment = (department)=> {
   exports.validateEditDepartment = (department)=> {
     const schema = Joi.object({
         departmentName: Joi.string(),
-        instituteName: Joi.string(),
+        institute: Joi.string(),
         departmentHead: Joi.string(),
         phoneNumber: Joi.string(),
         emailId: Joi.string().email(),
